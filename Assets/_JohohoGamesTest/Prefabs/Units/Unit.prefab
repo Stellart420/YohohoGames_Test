@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6884249414079428448}
+  _takeItemsCount: 2
 --- !u!195 &7011222428710503543
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -38,7 +38,11 @@ public class StripState : BusinessState
     {
         transform.localScale = Vector3.zero;
         gameObject.SetActive(true);
-        transform.DOScale(Vector3.one, 2f).OnComplete(()=> _unit.gameObject.SetActive(true));
+        transform.DOScale(Vector3.one, 2f).OnComplete(()=>
+        {
+            _unit.transform.localScale = Vector3.one;
+            _unit.gameObject.SetActive(true);
+        });
         _currencyController = MainController.Instance.CurrencyController;
         _trigger.OnEnter += CheckTrigger;
     }
