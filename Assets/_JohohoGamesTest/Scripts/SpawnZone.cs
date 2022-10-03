@@ -12,6 +12,7 @@ public class SpawnZone : MonoBehaviour
 			return point;
 		}
 	}
+
 	Vector3 RandomCircle(Vector3 center, float radius)
 	{
 		float ang = Random.value * 360;

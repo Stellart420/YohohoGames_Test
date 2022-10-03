@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class Item : MonoBehaviour
 {
@@ -15,7 +13,6 @@ public class Item : MonoBehaviour
         {
             if (player.Inventory.TryAddItem(_type))
             {
-                //todo Добавить Визуальный эффект подбора
                 var itemPool = MainController.Instance.ItemsController.ItemPools.FirstOrDefault(p => p.Type == _type);
                 itemPool.Pool.Release(this);
             }
