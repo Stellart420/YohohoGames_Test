@@ -12,7 +12,7 @@ public class MainController : MonoBehaviour
     [field: SerializeField] public GuiController GUIController { get; private set; }
     [field: SerializeField] public CurrencyController CurrencyController { get; private set; }
     [field: SerializeField] public ItemsController ItemsController { get; private set; }
-    
+    [field: SerializeField] public WorldController WorldController { get; private set; }
 
     private void Awake()
     {

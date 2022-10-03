@@ -11,9 +11,10 @@ public class Unit : MonoBehaviour
 
     private static int SPEED_HASH = Animator.StringToHash("Speed_f");
 
-    private void Awake()
+    private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
+        transform.SetParent(MainController.Instance.WorldController.UnitsParent);
     }
 
     private void FixedUpdate()
@@ -25,8 +26,12 @@ public class Unit : MonoBehaviour
         {
             var point = RandomNavmeshLocation();
             _agent.SetDestination(RandomNavmeshLocation());
+            SetSpeed(0f);
         }
-        SetSpeed(Mathf.Clamp(_agent.velocity.magnitude, 0, 0.5f));
+        else
+        {
+            SetSpeed(Mathf.Clamp(_agent.velocity.magnitude, 0.25f, 0.5f));
+        }
     }
 
     public void SetSpeed(float value)

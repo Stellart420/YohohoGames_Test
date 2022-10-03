@@ -13,6 +13,9 @@ public class StripState : BusinessState
     [SerializeField] private float _income = 2;
     [SerializeField] private float _frequency = 5;
 
+    [Space()]
+    [SerializeField] private Unit _unit;
+
     private CurrencyController _currencyController;
 
     private float _wait;
@@ -34,9 +37,8 @@ public class StripState : BusinessState
     public override void OnStateEnter()
     {
         transform.localScale = Vector3.zero;
-        _trigger.gameObject.SetActive(true);
-        transform.DOScale(Vector3.one, 2f);
-        _trigger.transform.DOScale(Vector3.one, 2f).OnComplete(() => gameObject.SetActive(true));
+        gameObject.SetActive(true);
+        transform.DOScale(Vector3.one, 2f).OnComplete(()=> _unit.gameObject.SetActive(true));
         _currencyController = MainController.Instance.CurrencyController;
         _trigger.OnEnter += CheckTrigger;
     }

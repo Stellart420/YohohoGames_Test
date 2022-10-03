@@ -9,6 +9,9 @@ public class ParkState : BusinessState
     [SerializeField] private float _needCurrency = 10;
     [SerializeField] private float _betweenSpendTime = 1f;
 
+    [Space()]
+    [SerializeField] private Unit _unit;
+
     private CurrencyController _currencyController;
     private Player _currentPlayer;
 
@@ -66,7 +69,7 @@ public class ParkState : BusinessState
     {
         gameObject.transform.localScale = Vector3.zero;
         gameObject.SetActive(true);
-        gameObject.transform.DOScale(1f, 2f);
+        gameObject.transform.DOScale(1f, 2f).OnComplete(()=> _unit.gameObject.SetActive(true));
         _currencyController = MainController.Instance.CurrencyController;
         _trigger.OnEnter += CheckEnter;
         _trigger.OnExit += CheckExit;
